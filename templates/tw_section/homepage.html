@@ -1,0 +1,41 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <div title="container">
+        <div style="border: solid; width: 30%; margin-bottom: 30px;" align="right" class="card" title="avatar-change">
+            <form id="avatar" style="width: 100%;">
+                <input type="file" name="image">
+            </form>
+
+        </div>
+        <div title="tweet here" id="tweet-box" class="card" style="width: 40%;">
+            <form action="tweet/" method="post" id="avatar" style="display:flex; flex-direction: column">
+                {% csrf_token %}
+                <textarea dir="ltr" name="tweet" id="tweet" placeholder="Tweet here!" onkeyup="resizeTextarea('tweet')"> </textarea>
+                <button class="btn btn-info" type="submit">Tweet</button>
+            </form>
+        </div>
+    </div>
+
+    {% for tweet in tweets %}
+        <div class="card" style="margin: 10px; padding: 10px; width: 50%">{{ tweet.body }}</div>
+    {% endfor %}
+
+    <script>
+        function resizeTextarea(id) {
+            var a = document.getElementById(id);
+            a.style.height = 'auto';
+            a.style.height = a.scrollHeight + 'px';
+        }
+
+        function init() {
+            var a = document.getElementById('tweet');
+            for (var i = 0, inb = a.length; i < inb; i++) {
+                if (a[i].getAttribute('data-resizable') == 'true')
+                    resizeTextarea(a[i].id);
+            }
+        }
+
+        addEventListener('DOMContentLoaded', init);
+    </script>
+{% endblock %}
