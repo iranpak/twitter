@@ -11,6 +11,7 @@
         <div title="tweet here" id="tweet-box" class="card" style="width: 40%;">
             <form action="tweet/" method="post" id="avatar" style="display:flex; flex-direction: column">
                 {% csrf_token %}
+                <input type="text" name="tweet_title" id="tweet_title" placeholder="Title" dir="ltr">
                 <textarea dir="ltr" name="tweet" id="tweet" placeholder="Tweet here!" onkeyup="resizeTextarea('tweet')"> </textarea>
                 <button class="btn btn-info" type="submit">Tweet</button>
             </form>
@@ -18,7 +19,7 @@
     </div>
 
     {% for tweet in tweets %}
-        <div class="card" style="margin: 10px; padding: 10px; width: 50%">{{ tweet.body }}</div>
+        <div class="card" style="margin: 10px; padding: 10px; width: 50%">{{ tweet.title }}<hr>{{ tweet.body }}</div>
     {% endfor %}
 
     <script>

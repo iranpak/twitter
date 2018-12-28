@@ -10,7 +10,9 @@ def store_tweet(request):
         user = request.user
         if user.is_authenticated:
             tweet_text = request.POST.get("tweet", "")
-            Tweet.objects.create(user=user, body=tweet_text)
+            tweet_title = request.POST.get("tweet_title", "")
+            print(tweet_title)
+            Tweet.objects.create(user=user, body=tweet_text, title=tweet_title)
 
             return redirect('home')
 
@@ -19,4 +21,6 @@ def get_all_tweets(request):
     user = request.user
     if user.is_authenticated:
         tweets = Tweet.objects.all().order_by('-created_at')
+        for t in tweets:
+            print(t.title)
         return render(request, 'tw_auth/all_tweets.html', {'tweets': tweets})

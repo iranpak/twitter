@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', auth_views.signup, name='signup'),
     path('login/', auth_views.login_view, name='login'),
+    path('logout/', auth_views.logout_view, name='logout'),
     path('tweet/', main_views.store_tweet, name='tweet'),
     path('all_tweets/', main_views.get_all_tweets, name='all_tweets'),
 ]
