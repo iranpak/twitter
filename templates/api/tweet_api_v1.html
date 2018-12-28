@@ -11,12 +11,18 @@
         <div title="tweet here" id="tweet-box" class="card" style="width: 40%;">
             <form action="tweet/" method="post" id="avatar" style="display:flex; flex-direction: column">
                 {% csrf_token %}
-                <textarea dir="ltr" name="tweet" id="tweet" placeholder="Tweet here!" onkeyup="resizeTextarea('tweet')"> </textarea>
+                <textarea dir="ltr" name="tweet" id="tweet" placeholder="Tweet here!"
+                          onkeyup="resizeTextarea('tweet')"> </textarea>
                 <label title=token>توکن را وارد کنید:
                     <input name="token_v1" type="text">
                 </label>
                 <button class="btn btn-info" type="submit">Tweet</button>
             </form>
+        </div>
+        <div style="margin-top: 20px; align-content: center;">
+            {% for tweet in tweets %}
+                <div class="card" style="margin: 10px; padding: 10px; width: 50%">{{ tweet.body }}</div>
+            {% endfor %}
         </div>
     </div>
 

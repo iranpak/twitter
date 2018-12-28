@@ -33,5 +33,8 @@ urlpatterns = [
     path('api/v1/tweet/', api_views.tweet_api_v1, name='tweet_api_v1'),
     path('all_tweets/', main_views.get_all_tweets, name='all_tweets'),
     path('api/v1/login/', api_views.login_v1, name='login_v1'),
-    path('logout', api_views.logout_v1, name='logout_v1')
+    path('logout', api_views.logout_v1, name='logout_v1'),
+    path('api/v2/tweet/', api_views.tweet_api_v2, name='tweet_api_v2'),
+    path('api/v2/token/', api_views.get_token_v2, name='get_token_v2'),
+    path('api/v2/tweet/tweet/', api_views.store_tweet_api_v2, name='store_tweet_api_v2'),
 ]
