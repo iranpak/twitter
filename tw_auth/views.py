@@ -17,6 +17,8 @@ def homepage(request):
         except Exception as e:
             print(traceback.format_exc())
             return render(request, 'tw_section/homepage.html', {'tweets': []})
+    else:
+        return render(request, 'tw_section/homepage.html', {'tweets': []})
 
 
 def signup(request):

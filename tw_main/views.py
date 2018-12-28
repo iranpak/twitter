@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from tw_auth.models import Tweet
-
+from api import models
+import uuid
 # Create your views here.
 
 
 def store_tweet(request):
     if request.method == 'POST':
         user = request.user
-        if user.is_authenticated:
+        if user.is_authenticated():
             tweet_text = request.POST.get("tweet", "")
             Tweet.objects.create(user=user, body=tweet_text)
 

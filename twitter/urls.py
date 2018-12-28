@@ -18,6 +18,8 @@ from django.urls import path
 from tw_auth import views as auth_views
 from django.contrib.auth import login
 from tw_main import views as main_views
+from api import views as api_views
+from django.urls import include
 
 # from tw_auth import views as auth_views
 
@@ -27,5 +29,9 @@ urlpatterns = [
     path('signup/', auth_views.signup, name='signup'),
     path('login/', auth_views.login_view, name='login'),
     path('tweet/', main_views.store_tweet, name='tweet'),
+    path('api/v1/tweet/tweet/', api_views.store_tweet_api_v1, name='store_tweet_api_v1'),
+    path('api/v1/tweet/', api_views.tweet_api_v1, name='tweet_api_v1'),
     path('all_tweets/', main_views.get_all_tweets, name='all_tweets'),
+    path('api/v1/login/', api_views.login_v1, name='login_v1'),
+    path('logout', api_views.logout_v1, name='logout_v1')
 ]

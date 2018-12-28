@@ -1,0 +1,10 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <div title="container" style="align-content: center;">
+        <label>توکن شما: </label>
+        <p>{{ token }}</p>
+    </div>
+    <a href="/api/v1/tweet" class="btn btn-primary">گرفتم</a>
+
+{% endblock %}
