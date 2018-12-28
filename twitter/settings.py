@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
     'tw_auth',
-    'tw_main'
+    'tw_main',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,6 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
