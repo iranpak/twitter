@@ -1,20 +1,30 @@
 {% extends "master.html" %}
 
+{% load static %}
+
 {% block content %}
     <div title="container">
-        <div style="border: solid; width: 30%; margin-bottom: 30px;" align="right" class="card" title="avatar-change">
-            <form id="avatar" style="width: 100%;">
-                <input type="file" name="image">
+        <div style="display: flex; flex-direction: row; justify-content: center; width: 40%; margin-bottom: 30px;">
+            <img src="{{ pic }}" style="border-radius: 50%">
+            <form enctype="multipart/form-data" action="upload_avatar/" method="post">
+                {% csrf_token %}
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="avatar_file" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <button type="submit">آپلود تصویر</button>
             </form>
-
         </div>
+
         <div title="tweet here" id="tweet-box" class="card" style="width: 40%;">
             <form action="tweet/" method="post" id="avatar" style="display:flex; flex-direction: column">
                 {% csrf_token %}
-                <textarea dir="ltr" name="tweet" id="tweet" placeholder="Tweet here!" onkeyup="resizeTextarea('tweet')"> </textarea>
+                <textarea dir="ltr" name="tweet" id="tweet" placeholder="Tweet here!"
+                          onkeyup="resizeTextarea('tweet')"> </textarea>
                 <button class="btn btn-info" type="submit">Tweet</button>
             </form>
         </div>
+
     </div>
 
     {% for tweet in tweets %}
